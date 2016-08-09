@@ -1,8 +1,19 @@
-    
-
-    /* Status.CSS for Linux-PoolManager
-     
-    Theme: Default
+/* Status.CSS for Linux-PoolManager
+# ==================================================================
+#       .__
+#______ |__| _____ ______  Portable Instant Mining Platform
+#\____ \|  |/     \____  \            PiMP-Classic
+#|  |_> >  |  Y Y  \  |_> >
+#|   __/|__|__|_|  /   __/   Support: #PiMP on FreenodeIRC
+#|__|            \/|__|           https://getPiMP.org
+#
+#
+# Copyright (c) 2016 getPiMP.org.  All Rights Reserved.
+# Author: melt (info@getpimp.org)
+# License: This code is licensed for use with getPiMP.org only.
+# Description: Styling for PoolManager/SeedManager
+# ==================================================================      
+    Theme: Newstyle
      
      
        Updated: 2014-Mar-02
@@ -18,76 +29,110 @@
      
     -------------------------------------*/
     /* all text on the page */
-    body, a {
-            background-color: #ffffff;
-            font-family: Tahoma, Geneva, sans-serif;
-            font-size: 14px;
-            border: 0px;
-            margin: 0px;
-            padding: 0px;
-            color: #000000;
-    }
-     
-    /* overview - header area */
-    #overview {
-            background-color: #0000ff;
-            font-size: 16px;
-            color: #c6e2ff;
-    }
-    #overview .label {
-    color: #ffffff;
-    }
-    #overview img {
-            padding-top: 3px;
-    }
-     
-    #overview td {
-            padding: 0 30px 0 10px;
-            font-size: 18px;
-    }
-    #overview .miner-name, td.overviewid, td.overviewhash {
-            color: #ffffff !important;
-            font-size: 24px !important;
-    }
-     
-    /* hyperlinks */
-    a {
-            color: #0000ff;
-    }
-     
-    a:hover {
-            color: #0000ff;
-    }
-     
-    /* the main table area */
-    #content {
-            padding: 20px;
-            vertical-align: top;
-            text-align: center;
-    }
-     
-    #content td {
-            border: 1px solid #0000ff;
-            padding: 5px;
-    }
-     
-    /* table headers */
-    #content td.header {
-            color: #0000ff;
-            background-color: #c2e6ff;
-            font-weight: bold;
-    }
-     
-    /* errors */
-    #content td.error {
-            color: #ffffff;
-            background-color: #ff0000;
-            font-weight: bold;
-    }
-     
-    /* buttons and text boxes */
-    input, button {
-            color: #0000ff;
-            background-color: #dddddd;
-    }
+
+@font-face {
+    font-family: titleFont;
+    src: url(/IFMI/themes/font-intblack.ttf);
+}
+@font-face {
+    font-family: textFont;
+    src: url(/IFMI/themes/font-robotoslab.ttf);
+}
+
+.logo {
+    display:block;
+    height: 65px;
+    width: 65px;
+}
+.logo a {
+    background-image: url(/IFMI/themes/poolmanager-logo-65x65.png);
+    display:block;
+    height: 65px;
+    width: 65px;
+}
+.smlogo a {
+    background-image: url(/IFMI/themes/seedmanager-logo-65x65.png);
+    display: block;
+    height: 65px;
+    width: 65px;
+}
+
+
+.section_header { 
+    font-size: 1.3em;
+    font-family: 'titleFont', sans-serif;
+}
+
+body, a {
+        background-color: #ffffff;
+        font-family: Tahoma, Geneva, sans-serif;
+        font-size: 14px;
+        border: 0px;
+        margin: 0px;
+        padding: 0px;
+        color: #000000;
+}
+ 
+/* overview - header area */
+#overview {
+        background-color: #0000ff;
+        font-size: 16px;
+        color: #c6e2ff;
+}
+#overview .label {
+color: #ffffff;
+}
+#overview img {
+        padding-top: 3px;
+}
+ 
+#overview td {
+        padding: 0 30px 0 10px;
+        font-size: 18px;
+}
+#overview .miner-name, td.overviewid, td.overviewhash {
+        color: #ffffff !important;
+        font-size: 24px !important;
+}
+ 
+/* hyperlinks */
+a {
+        color: #0000ff;
+}
+ 
+a:hover {
+        color: #0000ff;
+}
+ 
+/* the main table area */
+#content {
+        padding: 20px;
+        vertical-align: top;
+        text-align: center;
+}
+ 
+#content td {
+        border: 1px solid #0000ff;
+        padding: 5px;
+}
+ 
+/* table headers */
+#content td.header {
+        color: #0000ff;
+        background-color: #c2e6ff;
+        font-weight: bold;
+}
+ 
+/* errors */
+#content td.error {
+        color: #ffffff;
+        background-color: #ff0000;
+        font-weight: bold;
+}
+ 
+/* buttons and text boxes */
+input, button {
+        color: #0000ff;
+        background-color: #dddddd;
+}
 

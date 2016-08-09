@@ -300,7 +300,9 @@ my $okgpus = 0;
 my $problemgpus = 0;
 
 if (@gpus) {
-	$g1put .= "<TABLE id='gpucontent'><TR class='header'><TD class='header'>GPU</TD>";
+	$g1put .= "<TABLE id='gpucontent'>";
+	$g1put .= "<tr><h3 class='section_header' align='left'>GPUS:</h3></tr>";
+	$g1put .= "<TR class='header'><TD class='header'>GPU</TD>";
 	$g1put .= "<TD class='header'>Status</TD>";
 	$g1put .= "<TD class='header'>Temp</TD>";
 	$g1put .= "<TD class='header'>Fan</TD>";
@@ -603,7 +605,7 @@ if (@mconfig) {
 my $mcontrol;
 $mcontrol .= "<table id='mcontrol'><tr>";
 my $surl = "?"; $surl .= 'miner=$i';
-$mcontrol .= '<TD class="bigger"><A href="' . $surl . '">Miner</a></td>';
+$mcontrol .= '<TD class="bigger"><A href="' . $surl . '">Edit Miner Profile</a></td>';
 my $mvers = "CGMiner "; my $avers;
 if ($version =~ m/(\d+\.\d+\.\d+),API=(\d+\.\d+)/) {
 	$mvers .= $1;
@@ -771,16 +773,17 @@ if (@summary) {
 			  $mcontrol .= "<td><form name='mstart' action='status.pl' method='POST'><input type='hidden' name='mstart' value='start'><input type='submit' value='Start' onclick='this.disabled=true;this.form.submit();' > </form>";
 			}
 			$mcontrol .= "</td>";
-			$mcontrol .=  "<td><A href=/cgi-bin/farmstatus.pl>Farm Overview</A></td>" if (-e "/usr/lib/cgi-bin/farmstatus.pl");
-			$mcontrol .=  "<td><A href=/cgi-bin/seedstatus.pl>SeedManager</A></td>" if (-e "/usr/lib/cgi-bin/seedstatus.pl");
+			#$mcontrol .=  "<td><A href=/cgi-bin/farmstatus.pl>Farm Overview</A></td>" if (-e "/usr/lib/cgi-bin/farmstatus.pl");
+			$mcontrol .=  "<td><A href=/cgi-bin/seedstatus.pl>SeedManager (PoolManager for ASICs)</A></td>" if (-e "/usr/lib/cgi-bin/seedstatus.pl");
 		}
   }
 }
 $mcontrol .= "</tr></table><br>";
 
 
-my $adata = `cat /tmp/adata`;
-my $donate = "<div align='right'><b>If you love our work, please donate!</b><br>BTC: 1BfFyiViCY18vvrhQuYwDzvYUkUsUZLhcX</div>";
+#my $adata = `cat /tmp/adata`;
+my $adata = "<div align='left'>GETTING STARTED: <br/>Choose a profile in the dropdown box above and then click Select. <br/>Then Click 'Edit Miner Profile' above to customize.</div>";
+my $donate = "<div align='left'>Please donate to PiMP developers!<br/>BTC: 1BfFyiViCY18vvrhQuYwDzvYUkUsUZLhcX <br/>(or choose one of the PiMP testing Miner Profiles.)</div>";
 $mcontrol .= "<table><td>$adata</td><td>$donate</td></table><br>";
 
 if (-e "/opt/ifmi/gpucountbad") {
@@ -799,6 +802,7 @@ my $p1sum; my $psum; my $psput; my @poolmsg; my $pgimg;
 $p1sum .= "<table id='pcontent'>";
 
 if ($ispriv eq "S") {
+	$p1sum .= "<tr><h3 class='section_header' align='left'>POOLS:</h3></tr>";
 	$p1sum .= "<TR class='header'><TD class='header'>Pool</TD>";
 	$p1sum .= "<TD class='header'>Pool URL</TD>";
 #	$p1sum .= "<TD class='header'>Alias</TD>";
@@ -1006,6 +1010,7 @@ if ($ispriv eq "S") {
 
 	if (@profiles) {
 			$atable = "<table>";
+			$atable .= "<tr><h3 class='section_header' align='left'>ALGORITHMS:</h3></tr>";
 			$atable .= "<TR class='header'>";
 			$atable .= "<TD class='header'>Algo Profile</TD>";
 			$atable .= "<TD class='header'>Default</TD>";
@@ -1261,13 +1266,15 @@ given(my $x) {
 		print "<br></div>";
 		print "<div class=graphs>";
 		print "<table>";
+		print "<tr><h3 class='section_header' align='left'>GRAPHS:</h3></tr>";
+	
 		print "<tr><td align=left>";
 		my $img = "/var/www/IFMI/graphs/msummary.png";
 		if (-e $img) {
 			print '<img src="/IFMI/graphs/msummary.png"><br>';
 			print '<img src="/IFMI/graphs/gsummary.png">';
 		} else {
-			print "<font style='color: #999999; font-size: 10px;'>Summary graph not available yet.";
+			print "<font style='color: #999999; font-size: 10px;'>Summary graph not available yet. Miner may be starting or cannot start.";
 		}
 		print "</td></tr></table>";
 		print "</div>";

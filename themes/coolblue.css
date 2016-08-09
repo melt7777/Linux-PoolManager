@@ -1,9 +1,20 @@
 /* Status.CSS for Linux-PoolManager
-
-Theme: Coolblue
-
-
-   Updated: 2014-Mar-02
+# Theme: Coolblue
+# ==================================================================
+#       .__
+#______ |__| _____ ______  Portable Instant Mining Platform
+#\____ \|  |/     \____  \            PiMP-Classic
+#|  |_> >  |  Y Y  \  |_> >
+#|   __/|__|__|_|  /   __/   Support: #PiMP on FreenodeIRC
+#|__|            \/|__|           https://getPiMP.org
+#
+#
+# Copyright (c) 2016 getPiMP.org.  All Rights Reserved.
+# Author: melt (info@getpimp.org)
+# License: This code is licensed for use with getPiMP.org only.
+# Description: Styling for PoolManager/SeedManager
+# ================================================================== 
+Updated: 2016-08-09
 
 COLORS
 bg: 2c3e50
@@ -13,8 +24,41 @@ text: dddddd
 brighttext: 3498db
 highlight: 2980b9
 
-
 -------------------------------------*/
+
+/* all text on the page */
+
+@font-face {
+    font-family: titleFont;
+    src: url(/IFMI/themes/font-intblack.ttf);
+}
+@font-face {
+    font-family: textFont;
+    src: url(/IFMI/themes/font-robotoslab.ttf);
+}
+
+.logo {
+    display:block;
+    height: 65px;
+    width: 65px;
+}
+.logo a {
+    background-image: url(/IFMI/themes/poolmanager-logo-65x65.png);
+    display:block;
+    height: 65px;
+    width: 65px;
+}
+.smlogo a {
+    background-image: url(/IFMI/themes/seedmanager-logo-65x65.png);
+    display: block;
+    height: 65px;
+    width: 65px;
+}
+
+.section_header { 
+	font-size: 1.3em;
+	font-family: 'titleFont', sans-serif;
+}
 /* all text on the page */
 body, a { 
 	background-color: #2c3e50;
@@ -53,17 +97,7 @@ color: #2c3e50;
 	font-weight: 300;
 }
 
-.logo {
-    display: block;
-    height: 63px;
-    width: 155px;
-}
-.logo a {
-    background-image: url("/IFMI/IFMI-logo-small.png");
-    display: block;
-    height: 63px;
-    width: 155px;
-}
+
 .reset-btn {
     background: none repeat scroll 0 0 #3498db;
     border: 0 none;

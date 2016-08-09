@@ -1,9 +1,20 @@
 /* Status.CSS for Linux-PoolManager
-
-Theme: Leetgreen
-
-
-   Updated: 2014-Mar-02
+# Theme: Leetgreen
+# ==================================================================
+#       .__
+#______ |__| _____ ______  Portable Instant Mining Platform
+#\____ \|  |/     \____  \            PiMP-Classic
+#|  |_> >  |  Y Y  \  |_> >
+#|   __/|__|__|_|  /   __/   Support: #PiMP on FreenodeIRC
+#|__|            \/|__|           https://getPiMP.org
+#
+#
+# Copyright (c) 2016 getPiMP.org.  All Rights Reserved.
+# Author: melt (info@getpimp.org)
+# License: This code is licensed for use with getPiMP.org only.
+# Description: Styling for PoolManager/SeedManager
+# ================================================================== 
+Updated: 2016-08-09
 
 COLORS
 bg: 111111
@@ -12,15 +23,45 @@ border: 073002
 text: 19b526
 brighttext: 91f786
 highlight: e8e11e
-
-
 -------------------------------------*/
 
-
 /* all text on the page */
+
+@font-face {
+    font-family: titleFont;
+    src: url(/IFMI/themes/font-intblack.ttf);
+}
+@font-face {
+    font-family: textFont;
+    src: url(/IFMI/themes/font-robotoslab.ttf);
+}
+
+.logo {
+    display:block;
+    height: 65px;
+    width: 65px;
+}
+.logo a {
+    background-image: url(/IFMI/themes/poolmanager-logo-65x65.png);
+    display:block;
+    height: 65px;
+    width: 65px;
+}
+.smlogo a {
+    background-image: url(/IFMI/themes/seedmanager-logo-65x65.png);
+    display: block;
+    height: 65px;
+    width: 65px;
+}
+
+.section_header { 
+	font-size: 1.3em;
+	font-family: 'titleFont', sans-serif;
+}
+
 body, a { 
 	background-color: #111111;
-	font-family: Tahoma, Geneva, sans-serif;
+	font-family: 'textFont', serif;
 	font-size: 14px;
 	border: 0px;
 	margin: 0px;
@@ -38,6 +79,8 @@ body, a {
 }
 #overview .miner-name, td.overviewid, td.overviewhash {
 	color: #e8e11e;
+	font-family: 'titleFont', sans-serif;
+	
 	font-size: 24px;
 }
 #overview .label {
@@ -51,17 +94,7 @@ color: #ffffff;
 	padding: 0 30px 0 10px;
 	font-weight: 300;
 }
-.logo {
-    display: block;
-    height: 63px;
-    width: 155px;
-}
-.logo a {
-    background-image: url("/IFMI/IFMI-logo-small.png");
-    display: block;
-    height: 63px;
-    width: 155px;
-}
+
 .reset-btn {
     background: none repeat scroll 0 0 #073002;
     border: 0 none;
