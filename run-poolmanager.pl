@@ -90,6 +90,11 @@ while ($continue) {
   # Get the ad
   `cd /tmp ; wget --quiet -N http://ads.miner.farm/pm.html ; cp pm.html adata`;
 
+  # Datagather for non-API miners melt7777 - because this stuff needs root
+  `rm /tmp/pm-miners.txt /tmp/pm-screens.txt`;
+  `ps a | grep [m]iner > /tmp/pm-miners.txt`;
+  `ls /var/run/screen/S-root > /tmp/pm-screens.txt`;
+  
   sleep 60;
 }
 

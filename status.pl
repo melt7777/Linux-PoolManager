@@ -240,6 +240,7 @@ if (defined($q->param('gpu')))
 {
 	$showgpu = $q->param('gpu');
 }
+
 if (defined($q->param('pool')))
 {
 	$showpool = $q->param('pool');
@@ -587,7 +588,25 @@ if (@gpus) {
 		$problems = 0;
 	}
 	$g1put .= "</table>";
+} else {
+	#7777 Add pertinent information if no miner API
+	my $atitweak = `atitweak -s`;
+	my $screens = `cat /tmp/pm-screens.txt`;
+	my $processes = `cat /tmp/pm-miners.txt`;
+
+
+	$g1put .= "<TABLE id='gpucontent'>";
+	$g1put .= "<tr><h3 class='section_header' align='left'>GPU INFO:</h3><p align='left'>The Miner API is not available to PoolManager. However, here is some useful information about the current rig and its GPUs:</p></tr>";
+	$g1put .= "<TR class='header'><TD align='left' class='header'>GPU Status</TD></tr>";
+	$g1put .= "<TR><TD align='left'>$atitweak</TD></tr>";
+	$g1put .= "<TR class='header'><TD align='left' class='header'>Running Screens</TD></tr>";
+	$g1put .= "<TR><TD align='left'>$screens</TD></tr>";
+	$g1put .= "<TR class='header'><TD align='left' class='header'>Running Processes</TD></tr>";
+	$g1put .= "<TR><TD align='left'>$processes</TD></tr>";
+	
+	$g1put .="</table>";
 }
+
 
 my $mstrategy; my $mfonly; my $mscant; my $mqueue; my $mexpiry; my $mineri; my $mswdelay;
 if (@mconfig) {
@@ -677,7 +696,7 @@ if (@summary) {
 			$msput .= "<tr><td>Loaded Config:  </td><td colspan=3>";
 	    $msput .= "<a href='/cgi-bin/confedit.pl'>";
 			$msput .= "$currconf</a></td></tr>";
-			$mrunt = "Stopped" if (!defined $mrunt);
+			$mrunt = "Stopped/Unknown" if (!defined $mrunt);
 	    $msput .= "<tr><td>Run time:</td><td>" . $mrunt . "</td>";
 			if (defined $melapsed) {
 			  $msput .= "<td  colspan=2><form name='mstop' action='status.pl' method='POST'><input type='hidden' name='mstop' value='stop'><input type='submit' value='Stop' onclick='this.disabled=true;this.form.submit();' > ";
@@ -758,7 +777,7 @@ if (@summary) {
 				$mcontrol .= "<input type='submit' value='Restart'>";
 				$mcontrol .= "</select></form></td>";
 			} else {
-		  	$mcontrol .= "<td class='error'>Stopped</td>";
+		  	$mcontrol .= "<td class='error'>Stopped/Unknown</td>";
 			  $mcontrol .= "<td><form name=currentm method=post>Profile: <select name=setmconf>";
 				for (sort { $a <=> $b } keys %{$conf{miners}}) {
   				my $mname = $conf{miners}{$_}{mconfig};
