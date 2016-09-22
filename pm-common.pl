@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-#    This file is part of IFMI PoolManager.
+#    This file is part of PiMP PoolManager.
 #
 #    PoolManager is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -606,13 +606,11 @@ sub startCGMiner {
     die "out of resources? forking failed for cgminer process";
   } elsif ($pid == 0) {
     $ENV{DISPLAY} = ":0";
-    $ENV{LD_LIBRARY_PATH} = "/opt/AMD-APP-SDK-v2.4-lnx32/lib/x86/:/opt/AMDAPP/lib/x86_64:";
     $ENV{GPU_USE_SYNC_OBJECTS} = "1";
     $ENV{GPU_MAX_ALLOC_PERCENT} = "100";
     # added by melt7777
     $ENV{GPU_USE_SYNC_OBJECTS}="1";
     $ENV{GPU_MAX_HEAP_SIZE}="100";
-    $ENV{DISPLAY}=":0";
     $ENV{COMPUTE}=":0";
     $ENV{AMDAPPSDKROOT}="/opt/AMDAPPSDK-3.0";
     $ENV{LD_LIBRARY_PATH}="/opt/AMDAPPSDK-3.0/lib/x86_64:/opt/AMDAPPSDK-3.0/lib/x86";
@@ -620,10 +618,12 @@ sub startCGMiner {
     $ENV{GPU_SINGLE_ALLOC_PERCENT}="100";
 
     my $cmd = '';
+    my $screen_port = ${$conf}{settings}{cgminer_port}; # get the api port from poolmanager.conf
+    $screen_port = $screen_port > 0 ? $screen_port : "4028"; #default to 4028 if settings are wrong
     if ($savepath eq '') {
-    	$cmd = "cd /opt/ifmi; /usr/bin/screen -d -m -S PM-miner $minerbin $mineropts";		
+    	$cmd = "cd /opt/ifmi; /usr/bin/screen -d -m -S miner-$screen_port $minerbin $mineropts";		
     } else {
-    	$cmd = "cd /opt/ifmi; /usr/bin/screen -d -m -S PM-miner $minerbin --config $savepath $mineropts";		
+    	$cmd = "cd /opt/ifmi; /usr/bin/screen -d -m -S miner-$screen_port $minerbin --config $savepath $mineropts";		
     }
     
     &blog("starting miner with cmd: $cmd") if (defined(${$conf}{settings}{verbose}));
