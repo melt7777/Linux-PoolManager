@@ -42,7 +42,7 @@ while ($continue) {
         my $filecheck = 0; $filecheck = 1 if (-e "/opt/ifmi/nomine");
         my $xcheck1 = `ps -eo command | grep -cE ^/usr/bin/X`;
         my $xcheck2 = `ps -eo command | grep -cE ^X`;
-        my $mcheck = `ps -eo command | grep -cE [P]M-miner`;
+        my $mcheck = `ps -eo command | grep -cE [m]iner-`;
         if (($xcheck1 == 1 || $xcheck2 == 1) && $mcheck == 0 && $filecheck == 0) {
           &startCGMiner;
           sleep 15;
